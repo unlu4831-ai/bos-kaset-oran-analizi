@@ -5,518 +5,721 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Boş Kaset Oran Analizi | Geçmiş Maç ve Oran İstatistikleri</title>
+
   <meta name="description" content="Boş Kaset, geçmiş maçların kapanış oranlarını ve gerçekleşen sonuçlarını karşılaştıran ücretsiz bir futbol istatistik aracıdır. Aynı oranlara sahip geçmiş karşılaşmaları inceleyin.">
-  <meta name="keywords" content="oran analizi, geçmiş maç oranları, kapanış oranları, futbol istatistikleri, ilk yarı oran analizi">
+
+  <meta name="keywords" content="Boş Kaset, oran analizi, geçmiş maç oranları, kapanış oranları, futbol istatistikleri, ilk yarı oran analizi">
+
   <meta name="robots" content="index, follow">
+
   <meta name="author" content="Boş Kaset Oran Analizi">
+
+  <meta name="google-site-verification" content="hlOeXuyxLo8lpRQjmzG8Ap6Y1K_5h8m-USDPJUfepu4">
+
+  <meta property="og:site_name" content="Boş Kaset">
+  <meta property="og:title" content="Boş Kaset Oran Analizi">
+  <meta property="og:description" content="Geçmiş maç oranlarını ve gerçekleşen sonuçları karşılaştıran ücretsiz futbol istatistik aracı.">
+  <meta property="og:type" content="website">
+
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <meta name="google-site-verification" content="hlOeXuyxLo8lpRQjmzG8Ap6Y1K_5h8m-USDPJUfepu4" />
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Boş Kaset",
+    "alternateName":[
+      "Boş Kaset Oran Analizi",
+      "Boş Kaset Futbol Oran Analizi"
+    ]
+  }
+  </script>
+
   <style>
-:root{
-  --navy:#0b1220;
-  --navy2:#111b2e;
-  --blue:#2563eb;
-  --soft:#eff6ff;
-  --border:#e2e8f0;
-  --text:#172033;
-  --muted:#64748b;
-  --bg:#f5f7fb
-}
+    :root{
+      --navy:#0b1b2b;
+      --navy2:#122b43;
+      --blue:#1677e8;
+      --green:#18b765;
+      --light:#f4f8fc;
+      --line:#dbe5ef;
+      --text:#172334;
+      --muted:#64748b
+    }
 
-*{
-  box-sizing:border-box
-}
+    *{
+      box-sizing:border-box
+    }
 
-body{
-  margin:0;
-  background:radial-gradient(circle at 15% 0%,rgba(37,99,235,.08),transparent 28%),var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  font-size:13px
-}
+    body{
+      margin:0;
+      background:var(--light);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      font-size:14px
+    }
 
-.container-fluid.max-width-lg{
-  max-width:1180px;
-  margin:0 auto
-}
+    .topbar{
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      color:#fff;
+      padding:15px 18px;
+      box-shadow:0 4px 18px rgba(9,30,52,.18)
+    }
 
-.bk-header{
-  background:linear-gradient(135deg,var(--navy),var(--navy2));
-  color:#fff;
-  border-radius:18px;
-  padding:20px;
-  margin:8px 0 14px;
-  box-shadow:0 12px 30px rgba(11,18,32,.16);
-  position:relative;
-  overflow:hidden
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      max-width:1180px;
+      margin:auto
+    }
 
-.bk-header:after{
-  content:"";
-  position:absolute;
-  width:230px;
-  height:230px;
-  right:-80px;
-  top:-110px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:50%;
-  box-shadow:0 0 0 35px rgba(255,255,255,.025),0 0 0 70px rgba(255,255,255,.018)
-}
+    .logo-mark{
+      width:54px;
+      height:54px;
+      flex:0 0 54px;
+      border-radius:15px;
+      background:linear-gradient(145deg,#102f48,#0b1827);
+      border:1px solid rgba(255,255,255,.22);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 5px 14px rgba(0,0,0,.22)
+    }
 
-.bk-brand{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin-bottom:15px;
-  position:relative;
-  z-index:1
-}
+    .logo-mark svg{
+      width:38px;
+      height:38px
+    }
 
-.bk-logo{
-  width:48px;
-  height:48px;
-  flex:0 0 48px;
-  border-radius:13px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(145deg,#3b82f6,#1d4ed8);
-  box-shadow:0 8px 20px rgba(37,99,235,.35);
-  font-size:24px
-}
+    .brand-name{
+      font-size:25px;
+      font-weight:900;
+      letter-spacing:.5px;
+      line-height:1
+    }
 
-.site-brand-title{
-  margin:0;
-  color:#fff;
-  font-size:25px;
-  line-height:1.05;
-  font-weight:800;
-  letter-spacing:-.5px
-}
+    .brand-name span{
+      color:#25d875
+    }
 
-.bk-slogan{
-  color:#cbd5e1;
-  margin-top:4px;
-  font-size:12px;
-  font-weight:600
-}
+    .brand-slogan{
+      font-size:12px;
+      color:#d5e3ef;
+      margin-top:5px
+    }
 
-.disclaimer-text{
-  position:relative;
-  z-index:1;
-  background:rgba(255,255,255,.075);
-  border:1px solid rgba(255,255,255,.1);
-  border-left:3px solid #60a5fa;
-  color:#dbeafe;
-  padding:11px 13px;
-  border-radius:10px;
-  font-size:11.5px;
-  line-height:1.55;
-  margin-bottom:9px
-}
+    .page{
+      max-width:1180px;
+      margin:18px auto;
+      padding:0 12px
+    }
 
-.closing-odds-alert{
-  position:relative;
-  z-index:1;
-  background:rgba(245,158,11,.11);
-  color:#fde68a;
-  border:1px solid rgba(245,158,11,.28);
-  padding:11px 13px;
-  border-radius:10px;
-  font-size:11.5px;
-  line-height:1.6;
-  margin-bottom:13px
-}
+    .hero{
+      background:linear-gradient(135deg,#0b1b2b,#123957);
+      border-radius:18px;
+      color:#fff;
+      padding:24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      box-shadow:0 8px 25px rgba(15,40,65,.15);
+      margin-bottom:16px
+    }
 
-.contact-bar{
-  position:relative;
-  z-index:1;
-  font-size:11px;
-  color:#94a3b8;
-  border-top:1px solid rgba(255,255,255,.1)!important;
-  padding-top:12px!important
-}
+    .hero h1{
+      font-size:27px;
+      margin:0 0 7px;
+      font-weight:850
+    }
 
-.contact-btn-email,
-.contact-btn-x{
-  padding:5px 9px;
-  border-radius:7px;
-  font-weight:700;
-  text-decoration:none
-}
+    .hero p{
+      margin:0;
+      color:#d9e8f4;
+      max-width:650px;
+      line-height:1.6
+    }
 
-.contact-btn-email{
-  color:#a7f3d0;
-  border:1px solid rgba(16,185,129,.45);
-  background:rgba(16,185,129,.1)
-}
+    .hero-icon{
+      font-size:72px;
+      color:#2ad979;
+      opacity:.9;
+      padding:0 20px
+    }
 
-.contact-btn-x{
-  color:#fff;
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.08)
-}
+    .info-grid{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:14px;
+      margin-bottom:16px
+    }
 
-.bk-section-label{
-  color:var(--muted);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.08em;
-  margin:0 0 4px
-}
+    .card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      box-shadow:0 5px 18px rgba(15,40,65,.06)
+    }
 
-.bk-analysis-title{
-  font-size:21px;
-  font-weight:800;
-  margin:0
-}
+    .info-card{
+      padding:15px 17px
+    }
 
-.bk-analysis-subtitle{
-  color:var(--muted);
-  font-size:12px;
-  margin:3px 0 13px
-}
+    .section-title{
+      font-weight:800;
+      color:#18314a;
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:8px
+    }
 
-.main-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:18px;
-  box-shadow:0 8px 28px rgba(15,23,42,.07);
-  padding:16px
-}
+    .section-title i{
+      color:var(--blue)
+    }
 
-.nav-tabs{
-  border-bottom:1px solid var(--border);
-  gap:5px;
-  margin-bottom:13px!important
-}
+    .notice{
+      font-size:12px;
+      line-height:1.65;
+      color:#536273
+    }
 
-.nav-tabs .nav-link{
-  color:var(--muted);
-  font-weight:750;
-  border:0;
-  border-radius:9px 9px 0 0;
-  padding:10px 13px;
-  font-size:12.5px
-}
+    .notice strong{
+      color:#26384c
+    }
 
-.nav-tabs .nav-link:hover{
-  color:var(--blue);
-  background:var(--soft)
-}
+    .method{
+      background:#fff8df;
+      border:1px solid #f0df9a;
+      border-radius:10px;
+      padding:11px 12px;
+      margin-top:10px;
+      font-size:11.5px;
+      color:#67551d;
+      line-height:1.6
+    }
 
-.nav-tabs .nav-link.active{
-  color:var(--blue);
-  background:var(--soft);
-  border-bottom:3px solid var(--blue)
-}
+    .contact{
+      padding:15px 17px
+    }
 
-.filter-box{
-  background:#f8fafc;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:10px;
-  margin-bottom:12px
-}
+    .contact-links{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap
+    }
 
-.filter-box .form-control{
-  border-color:#dbe2ea;
-  border-radius:9px;
-  font-weight:650;
-  min-height:38px
-}
+    .contact a{
+      text-decoration:none;
+      border-radius:8px;
+      padding:6px 10px;
+      font-weight:700;
+      font-size:11px
+    }
 
-.filter-box .form-control:focus{
-  border-color:#93c5fd;
-  box-shadow:0 0 0 .18rem rgba(37,99,235,.1)
-}
+    .mail{
+      color:#12844b;
+      border:1px solid #8bd5b0;
+      background:#effbf5
+    }
 
-.table-responsive{
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  border:1px solid var(--border);
-  border-radius:12px
-}
+    .xlink{
+      color:#111;
+      border:1px solid #cfd5dc;
+      background:#f7f8fa
+    }
 
-.table{
-  min-width:550px!important;
-  margin-bottom:0
-}
+    .main-card{
+      padding:12px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      box-shadow:0 5px 18px rgba(15,40,65,.06)
+    }
 
-.table thead th{
-  background:var(--navy)!important;
-  color:#fff!important;
-  text-align:center;
-  vertical-align:middle;
-  font-size:11px;
-  padding:11px 5px;
-  white-space:nowrap;
-  border:0
-}
+    .nav-tabs{
+      border-bottom:1px solid var(--line)
+    }
 
-.table thead th:first-child{
-  text-align:left;
-  padding-left:10px
-}
+    .nav-tabs .nav-link{
+      border:0;
+      color:#566579;
+      font-weight:750;
+      padding:11px 14px;
+      font-size:13px;
+      border-bottom:3px solid transparent
+    }
 
-.table tbody td{
-  vertical-align:middle;
-  text-align:center;
-  padding:9px 5px;
-  font-size:12.5px;
-  white-space:nowrap;
-  border-color:#eef2f7
-}
+    .nav-tabs .nav-link.active{
+      color:var(--green);
+      background:transparent;
+      border-bottom-color:var(--green)
+    }
 
-.table tbody tr:hover{
-  background:#f8fbff
-}
+    .nav-tabs i{
+      margin-right:6px
+    }
 
-.match-cell{
-  text-align:left!important;
-  font-weight:700;
-  color:#1e293b;
-  white-space:nowrap!important;
-  padding-left:10px
-}
+    .filter-box{
+      background:#f0f7ff;
+      border:1px solid #d4e7fa;
+      border-radius:11px;
+      padding:12px;
+      margin:12px 0
+    }
 
-/* İLK YARI SKORU - KIRMIZI */
-.badge-iy{
-  padding:4px 8px;
-  border-radius:6px;
-  font-weight:800;
-  font-size:11px;
-  display:inline-block;
-  background:#dc2626;
-  color:#fff;
-  border:1px solid #b91c1c
-}
+    .filter-label{
+      font-size:11px;
+      color:#65758a;
+      font-weight:700;
+      margin-bottom:4px
+    }
 
-/* MAÇ SONU SKORU - YEŞİL */
-.badge-ms{
-  padding:4px 8px;
-  border-radius:6px;
-  font-weight:800;
-  font-size:11px;
-  display:inline-block;
-  background:#16a34a;
-  color:#fff;
-  border:1px solid #15803d
-}
+    .form-control{
+      border-color:#cfdce8
+    }
 
-.dataTables_wrapper{
-  padding-top:11px;
-  color:var(--muted);
-  font-size:11px
-}
+    .form-control:focus{
+      border-color:#6daeea;
+      box-shadow:0 0 0 .15rem rgba(22,119,232,.12)
+    }
 
-.dataTables_wrapper .dataTables_length select,
-.dataTables_wrapper .dataTables_filter input{
-  border:1px solid var(--border);
-  border-radius:7px;
-  padding:4px 7px;
-  background:#fff
-}
+    .table-responsive{
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch
+    }
 
-.dataTables_wrapper .dataTables_filter input{
-  margin-left:5px
-}
+    .table{
+      min-width:550px!important;
+      margin-bottom:0
+    }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button{
-  border-radius:7px!important;
-  border:0!important;
-  margin:0 1px;
-  padding:3px 8px!important
-}
+    .table thead th{
+      background:#123957!important;
+      color:#fff!important;
+      text-align:center;
+      vertical-align:middle;
+      font-size:12px;
+      padding:10px 4px;
+      white-space:nowrap
+    }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current{
-  background:var(--blue)!important;
-  color:#fff!important
-}
+    .table tbody td{
+      vertical-align:middle;
+      text-align:center;
+      padding:9px 4px;
+      font-size:13px;
+      white-space:nowrap
+    }
 
-.bk-free-note{
-  margin-top:14px;
-  padding:14px 16px;
-  border:1px solid var(--border);
-  border-radius:14px;
-  background:#fff;
-  box-shadow:0 5px 18px rgba(15,23,42,.045)
-}
+    .table-striped>tbody>tr:nth-of-type(odd)>*{
+      background-color:#f8fbfe
+    }
 
-.bk-free-note strong{
-  display:block;
-  font-size:13px;
-  margin-bottom:3px
-}
+    .match-cell{
+      text-align:left!important;
+      font-weight:700;
+      color:#1e293b;
+      white-space:nowrap!important;
+      padding-left:10px
+    }
 
-.bk-free-note span{
-  color:var(--muted);
-  font-size:11.5px
-}
+    .badge-iy,
+    .badge-ms{
+      min-width:58px;
+      padding:7px 10px;
+      border-radius:9px;
+      font-weight:800;
+      font-size:14px;
+      line-height:1.1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap!important;
+      color:#fff;
+      box-shadow:0 2px 5px rgba(15,23,42,.12)
+    }
 
-.bk-footer{
-  text-align:center;
-  color:#94a3b8;
-  font-size:10.5px;
-  padding:18px 5px 12px
-}
+    .badge-iy{
+      background:#dc2626;
+      border:1px solid #b91c1c
+    }
 
-@media(max-width:576px){
-  .bk-header{
-    border-radius:15px;
-    padding:16px;
-    margin-top:4px
-  }
+    .badge-ms{
+      background:#16a34a;
+      border:1px solid #15803d
+    }
 
-  .site-brand-title{
-    font-size:22px
-  }
+    .footer{
+      margin-top:16px;
+      background:var(--navy);
+      color:#d7e4ef;
+      border-radius:13px;
+      padding:12px 15px;
+      font-size:11px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap
+    }
 
-  .bk-logo{
-    width:43px;
-    height:43px;
-    flex-basis:43px
-  }
+    .footer strong{
+      color:#fff
+    }
 
-  .main-card{
-    border-radius:15px;
-    padding:11px
-  }
+    .footer i{
+      color:#25d875;
+      margin-right:5px
+    }
 
-  .nav-tabs .nav-link{
-    padding:9px 8px;
-    font-size:11.5px
-  }
+    .dataTables_wrapper .dataTables_filter{
+      font-size:12px;
+      margin-bottom:8px
+    }
 
-  .contact-bar{
-    gap:8px
-  }
-}
+    .dataTables_wrapper .dataTables_filter input{
+      border:1px solid #cfdce8;
+      border-radius:7px;
+      padding:5px 8px;
+      margin-left:5px
+    }
+
+    .dataTables_wrapper .dataTables_paginate{
+      font-size:12px;
+      margin-top:8px
+    }
+
+    @media(max-width:768px){
+      .hero{
+        padding:19px
+      }
+
+      .hero h1{
+        font-size:22px
+      }
+
+      .hero-icon{
+        font-size:50px;
+        padding:0
+      }
+
+      .info-grid{
+        grid-template-columns:1fr
+      }
+
+      .brand-name{
+        font-size:22px
+      }
+    }
+
+    @media(max-width:576px){
+      body{
+        font-size:13px
+      }
+
+      .page{
+        margin-top:10px;
+        padding:0 7px
+      }
+
+      .topbar{
+        padding:12px
+      }
+
+      .logo-mark{
+        width:46px;
+        height:46px;
+        flex-basis:46px
+      }
+
+      .hero{
+        border-radius:13px;
+        padding:16px
+      }
+
+      .hero-icon{
+        display:none
+      }
+
+      .hero h1{
+        font-size:20px
+      }
+
+      .nav-tabs .nav-link{
+        padding:10px 8px;
+        font-size:12px
+      }
+
+      .table tbody td{
+        padding:10px 4px
+      }
+
+      .badge-iy,
+      .badge-ms{
+        min-width:58px;
+        padding:7px 8px;
+        font-size:13px;
+        border-radius:9px
+      }
+
+      .footer{
+        border-radius:10px
+      }
+    }
   </style>
 </head>
 
-<body class="p-1 p-md-3">
+<body>
 
-  <div class="container-fluid max-width-lg p-0">
+  <header class="topbar">
+    <div class="brand">
 
-    <div class="bk-header">
+      <div class="logo-mark" aria-label="Boş Kaset logo">
 
-      <div class="bk-brand">
-        <div class="bk-logo" aria-hidden="true">📼</div>
+        <svg viewBox="0 0 64 64" fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+             aria-hidden="true">
 
-        <div>
-          <div class="site-brand-title">BOŞ KASET</div>
-          <div class="bk-slogan">Oranlar değişir, geçmiş değişmez.</div>
+          <rect x="8" y="13"
+                width="48"
+                height="38"
+                rx="8"
+                stroke="#25d875"
+                stroke-width="4"
+                transform="rotate(-7 8 13)"/>
+
+          <circle cx="22" cy="32" r="7"
+                  stroke="#fff"
+                  stroke-width="3"/>
+
+          <circle cx="42" cy="32" r="7"
+                  stroke="#fff"
+                  stroke-width="3"/>
+
+          <path d="M22 25h20M22 39h20"
+                stroke="#25d875"
+                stroke-width="3"
+                stroke-linecap="round"/>
+
+          <path d="M49 41l-4-2-3 3 1 5 5 2 4-3z"
+                fill="#fff"/>
+
+        </svg>
+
+      </div>
+
+      <div>
+        <div class="brand-name">
+          BOŞ <span>KASET</span>
+        </div>
+
+        <div class="brand-slogan">
+          Oranlar değişir, geçmiş değişmez.
         </div>
       </div>
 
-      <div class="disclaimer-text">
-        <strong>⚠️ Bilgilendirme:</strong>
-        Boş Kaset; geçmiş karşılaşmalarda oluşan oranlar ile gerçekleşen maç sonuçlarını karşılaştırmak amacıyla hazırlanmış ücretsiz bir istatistik aracıdır. Sunulan veriler geçmiş karşılaşmalara dayanır; gelecekteki sonuçlar için garanti veya tahmin sunmaz. Platform bahis oynatmaz ve bahis oynamaya teşvik etmez.
-      </div>
-
-      <div class="closing-odds-alert">
-        <strong>📌 Analiz yöntemi:</strong>
-        Veritabanı, geçmiş maçların başlamasına yakın dönemdeki <strong>son kapanış oranları</strong> esas alınarak oluşturulmuştur. Karşılaştırmanın daha sağlıklı olması için mümkün olduğunca güncel kapanış oranlarının kullanılması önerilir.
-      </div>
-
-      <div class="contact-bar d-flex justify-content-between align-items-center flex-wrap">
-
-        <div class="d-flex align-items-center gap-2 flex-wrap">
-          <strong>📩 İş Birliği & Reklam:</strong>
-
-          <a href="mailto:unlu4831@gmail.com" class="contact-btn-email">
-            unlu4831@gmail.com
-          </a>
-
-          <a href="https://x.com/LeonMaykkk"
-             target="_blank"
-             rel="noopener"
-             class="contact-btn-x">
-            𝕏 @LeonMaykkk
-          </a>
-        </div>
-
-        <span class="text-muted ms-auto" style="font-size:10px;">
-          © 2026 Boş Kaset
-        </span>
-
-      </div>
     </div>
+  </header>
 
 
-    <div class="main-card">
+  <main class="page">
 
-      <div class="bk-section-label">FUTBOL VERİLERİ</div>
+    <section class="hero">
 
-      <h1 class="bk-analysis-title">
-        Geçmiş Oran Analizi
-      </h1>
+      <div>
+        <h1>Geçmiş Oran Analizi</h1>
 
-      <div class="bk-analysis-subtitle">
-        Aynı oranlara sahip geçmiş karşılaşmaları ve gerçekleşen sonuçları inceleyin.
+        <p>
+          Girdiğiniz oranları geçmiş karşılaşmalarla karşılaştırın.
+          Aynı oranlara sahip maçların gerçekleşen sonuçlarını hızlıca inceleyin.
+        </p>
+      </div>
+
+      <div class="hero-icon">
+        <i class="bi bi-bar-chart-line-fill"></i>
+      </div>
+
+    </section>
+
+
+    <section class="info-grid">
+
+      <div class="card info-card">
+
+        <div class="section-title">
+          <i class="bi bi-info-circle-fill"></i>
+          Boş Kaset hakkında
+        </div>
+
+        <div class="notice">
+
+          <strong>Boş Kaset</strong>;
+          geçmiş karşılaşmalarda oluşan oranlar ile gerçekleşen maç sonuçlarını
+          karşılaştırmak amacıyla hazırlanmış ücretsiz bir istatistik aracıdır.
+
+          Sunulan veriler geçmiş karşılaşmalara dayanır;
+          gelecekteki sonuçlar için garanti veya tahmin sunmaz.
+
+          Platform bahis oynatmaz ve bahis oynamaya teşvik etmez.
+
+        </div>
+
+        <div class="method">
+
+          <strong>
+            <i class="bi bi-lightbulb-fill"></i>
+            Analiz yöntemi:
+          </strong>
+
+          Veritabanı, geçmiş maçların başlamasına yakın dönemdeki
+          son kapanış oranları esas alınarak oluşturulmuştur.
+
+          Karşılaştırmanın daha sağlıklı olması için mümkün olduğunca
+          güncel kapanış oranlarının kullanılması önerilir.
+
+        </div>
+
       </div>
 
 
-      <ul class="nav nav-tabs mb-2" id="analizTab" role="tablist">
+      <div class="card contact">
+
+        <div class="section-title">
+          <i class="bi bi-envelope-fill"></i>
+          İş Birliği & Reklam
+        </div>
+
+        <div class="notice mb-2">
+          Marka, reklam ve iş birliği talepleri için iletişime geçebilirsiniz.
+        </div>
+
+        <div class="contact-links">
+
+          <a class="mail"
+             href="mailto:unlu4831@gmail.com">
+
+            <i class="bi bi-envelope"></i>
+            E-posta
+
+          </a>
+
+          <a class="xlink"
+             href="https://x.com/LeonMaykkk"
+             target="_blank"
+             rel="noopener">
+
+            <i class="bi bi-twitter-x"></i>
+            X
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="main-card">
+
+      <ul class="nav nav-tabs mb-2"
+          id="analizTab"
+          role="tablist">
 
         <li class="nav-item">
-          <button class="nav-link active"
-                  id="ms-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#ms-analiz"
-                  type="button">
-            ⚽ Maç Sonucu Oran Analizi
+
+          <button
+            class="nav-link active"
+            id="ms-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#ms-analiz"
+            type="button">
+
+            <i class="bi bi-graph-up-arrow"></i>
+            Maç Sonucu Oran Analizi
+
           </button>
+
         </li>
 
+
         <li class="nav-item">
-          <button class="nav-link"
-                  id="iy-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#iy-analiz"
-                  type="button">
-            ⏱️ İlk Yarı Oran Analizi
+
+          <button
+            class="nav-link"
+            id="iy-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#iy-analiz"
+            type="button">
+
+            <i class="bi bi-stopwatch"></i>
+            İlk Yarı Oran Analizi
+
           </button>
+
         </li>
 
       </ul>
 
 
-      <div class="tab-content" id="analizTabContent">
+      <div class="tab-content"
+           id="analizTabContent">
 
 
-        <!-- MAÇ SONUCU ANALİZİ -->
-
-        <div class="tab-pane fade show active" id="ms-analiz">
+        <div class="tab-pane fade show active"
+             id="ms-analiz">
 
           <div class="filter-box">
 
             <div class="row g-2">
 
               <div class="col-4">
-                <input type="text"
-                       id="ms1_filter"
-                       class="form-control form-control-sm text-center"
-                       placeholder="MS 1">
+
+                <div class="filter-label">
+                  MS 1
+                </div>
+
+                <input
+                  type="text"
+                  id="ms1_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
               </div>
 
-              <div class="col-4">
-                <input type="text"
-                       id="msx_filter"
-                       class="form-control form-control-sm text-center"
-                       placeholder="MS X">
-              </div>
 
               <div class="col-4">
-                <input type="text"
-                       id="ms2_filter"
-                       class="form-control form-control-sm text-center"
-                       placeholder="MS 2">
+
+                <div class="filter-label">
+                  MS X
+                </div>
+
+                <input
+                  type="text"
+                  id="msx_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
+              </div>
+
+
+              <div class="col-4">
+
+                <div class="filter-label">
+                  MS 2
+                </div>
+
+                <input
+                  type="text"
+                  id="ms2_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
               </div>
 
             </div>
@@ -526,18 +729,38 @@ body{
 
           <div class="table-responsive">
 
-            <table id="msTable"
-                   class="table table-striped table-hover border align-middle">
+            <table
+              id="msTable"
+              class="table table-striped table-hover border align-middle">
 
               <thead>
 
                 <tr>
-                  <th style="width:45%;">MAÇ</th>
-                  <th style="width:11%;">MS 1</th>
-                  <th style="width:11%;">MS X</th>
-                  <th style="width:11%;">MS 2</th>
-                  <th style="width:11%;">İYK</th>
-                  <th style="width:11%;">MSK</th>
+
+                  <th style="width:45%">
+                    MAÇ
+                  </th>
+
+                  <th style="width:11%">
+                    MS 1
+                  </th>
+
+                  <th style="width:11%">
+                    MS X
+                  </th>
+
+                  <th style="width:11%">
+                    MS 2
+                  </th>
+
+                  <th style="width:11%">
+                    İYK
+                  </th>
+
+                  <th style="width:11%">
+                    MSK
+                  </th>
+
                 </tr>
 
               </thead>
@@ -551,34 +774,55 @@ body{
         </div>
 
 
-
-        <!-- İLK YARI ANALİZİ -->
-
-        <div class="tab-pane fade" id="iy-analiz">
+        <div class="tab-pane fade"
+             id="iy-analiz">
 
           <div class="filter-box">
 
             <div class="row g-2">
 
               <div class="col-4">
-                <input type="text"
-                       id="iy1_filter"
-                       class="form-control form-control-sm text-center"
-                       placeholder="İY 1">
+
+                <div class="filter-label">
+                  İY 1
+                </div>
+
+                <input
+                  type="text"
+                  id="iy1_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
               </div>
 
-              <div class="col-4">
-                <input type="text"
-                       id="iyx_filter"
-                       class="form-control form-control-sm text-center"
-                       placeholder="İY X">
-              </div>
 
               <div class="col-4">
-                <input type="text"
-                       id="iy2_filter"
-                       class="form-control form-control-sm text-center"
-                       placeholder="İY 2">
+
+                <div class="filter-label">
+                  İY X
+                </div>
+
+                <input
+                  type="text"
+                  id="iyx_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
+              </div>
+
+
+              <div class="col-4">
+
+                <div class="filter-label">
+                  İY 2
+                </div>
+
+                <input
+                  type="text"
+                  id="iy2_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
               </div>
 
             </div>
@@ -588,17 +832,34 @@ body{
 
           <div class="table-responsive">
 
-            <table id="iyTable"
-                   class="table table-striped table-hover border align-middle">
+            <table
+              id="iyTable"
+              class="table table-striped table-hover border align-middle">
 
               <thead>
 
                 <tr>
-                  <th style="width:52%;">MAÇ</th>
-                  <th style="width:12%;">İY 1</th>
-                  <th style="width:12%;">İY X</th>
-                  <th style="width:12%;">İY 2</th>
-                  <th style="width:12%;">İYK</th>
+
+                  <th style="width:52%">
+                    MAÇ
+                  </th>
+
+                  <th style="width:12%">
+                    İY 1
+                  </th>
+
+                  <th style="width:12%">
+                    İY X
+                  </th>
+
+                  <th style="width:12%">
+                    İY 2
+                  </th>
+
+                  <th style="width:12%">
+                    İYK
+                  </th>
+
                 </tr>
 
               </thead>
@@ -613,31 +874,38 @@ body{
 
       </div>
 
-    </div>
+    </section>
 
 
-    <div class="bk-free-note">
-
-      <strong>🎯 Ücretsiz futbol istatistik aracı</strong>
+    <footer class="footer">
 
       <span>
-        Boş Kaset, geçmiş oran ve sonuç verilerini herkesin ücretsiz inceleyebilmesi için hazırlanıyor. Platformun sürdürülebilirliği için ileride reklam ve sponsorluk alanları kullanılabilir.
+        <strong>BOŞ KASET</strong>
+        · Oranlar değişir, geçmiş değişmez.
       </span>
 
-    </div>
+      <span>
+        <i class="bi bi-shield-check"></i>
+        Geçmiş futbol istatistikleri
+      </span>
 
+      <span>
+        © 2026 Tüm Hakları Saklıdır.
+      </span>
 
-    <div class="bk-footer">
-      Boş Kaset Oran Analizi · Geçmiş veriler, istatistiksel karşılaştırma · İletişim: unlu4831@gmail.com
-    </div>
+    </footer>
 
-  </div>
+  </main>
 
 
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
   <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 
@@ -650,98 +918,116 @@ body{
       "https://docs.google.com/spreadsheets/d/14yjMc1-ANEtwiG9kkDbmiYSdM9Aa4x6Bl6w1QTJHXT0/gviz/tq?tqx=out:csv";
 
 
-    function cleanRate(val) {
+    function cleanRate(val){
 
-      if(!val) return "";
+      if(!val)
+        return "";
 
-      let s = val.toString().trim().replace(',', '.');
+      let s =
+        val
+          .toString()
+          .trim()
+          .replace(',','.');
 
-      let n = parseFloat(s);
+      let n =
+        parseFloat(s);
 
-      if(isNaN(n)) return "";
+      if(isNaN(n))
+        return "";
 
       return n.toFixed(2);
+
     }
 
 
-    $(document).ready(function() {
+    $(document).ready(function(){
+
+      let dtMS =
+        $('#msTable').DataTable({
+
+          paging:true,
+          pageLength:25,
+          info:false,
+          ordering:false,
+
+          language:{
+            zeroRecords:"Orana uygun maç bulunamadı",
+            search:"Sonuçlarda Ara:"
+          }
+
+        });
 
 
-      let dtMS = $('#msTable').DataTable({
+      let dtIY =
+        $('#iyTable').DataTable({
 
-        paging:true,
-        pageLength:25,
-        info:false,
-        ordering:false,
+          paging:true,
+          pageLength:25,
+          info:false,
+          ordering:false,
 
-        language:{
-          zeroRecords:"Orana uygun maç bulunamadı",
-          search:"Sonuçlarda Ara:"
-        }
+          language:{
+            zeroRecords:"Orana uygun maç bulunamadı",
+            search:"Sonuçlarda Ara:"
+          }
 
-      });
-
-
-      let dtIY = $('#iyTable').DataTable({
-
-        paging:true,
-        pageLength:25,
-        info:false,
-        ordering:false,
-
-        language:{
-          zeroRecords:"Orana uygun maç bulunamadı",
-          search:"Sonuçlarda Ara:"
-        }
-
-      });
+        });
 
 
-
-      /* MAÇ SONU VERİLERİ */
-
-      Papa.parse(MS_CSV_URL, {
+      Papa.parse(MS_CSV_URL,{
 
         download:true,
         header:false,
 
-        complete:function(results) {
+        complete:function(results){
 
-          let data = results.data;
+          let data =
+            results.data;
 
           dtMS.clear();
 
-          for(let i=1;i<data.length;i++) {
 
-            let r = data[i];
+          for(let i=1;i<data.length;i++){
 
-            if(r &&
-               r[1] &&
-               r[1].trim() !== "" &&
-               r[1] !== "MAÇ") {
+            let r =
+              data[i];
+
+
+            if(
+              r &&
+              r[1] &&
+              r[1].trim()!=="" &&
+              r[1]!=="MAÇ"
+            ){
 
               let mac =
                 `<div class="match-cell">${r[1]}</div>`;
 
-              let ms1 = cleanRate(r[2]);
-              let msx = cleanRate(r[3]);
-              let ms2 = cleanRate(r[4]);
 
+              let ms1 =
+                cleanRate(r[2]);
 
-              /* İLK YARI SKORU KIRMIZI */
+              let msx =
+                cleanRate(r[3]);
+
+              let ms2 =
+                cleanRate(r[4]);
+
 
               let iySkor =
-                (r[6] && r[6].trim() !== "")
-                ? `<span class="badge-iy">${r[6]}</span>`
-                : '-';
+                (r[6] && r[6].trim()!=="")
+                ?
+                `<span class="badge-iy">${r[6]}</span>`
+                :
+                '-';
 
-
-              /* MAÇ SONU SKORU YEŞİL */
 
               let msSkor =
-                (r[7] && r[7].trim() !== "")
-                ? `<span class="badge-ms">${r[7]}</span>`
-                : '-';
+                (r[7] && r[7].trim()!=="")
+                ?
+                `<span class="badge-ms">${r[7]}</span>`
+                :
+                '-';
 
 
               dtMS.row.add([
@@ -757,6 +1043,7 @@ body{
 
           }
 
+
           dtMS.draw();
 
         }
@@ -764,43 +1051,52 @@ body{
       });
 
 
-
-      /* İLK YARI VERİLERİ */
-
-      Papa.parse(IY_CSV_URL, {
+      Papa.parse(IY_CSV_URL,{
 
         download:true,
         header:false,
 
-        complete:function(results) {
+        complete:function(results){
 
-          let data = results.data;
+          let data =
+            results.data;
 
           dtIY.clear();
 
-          for(let i=1;i<data.length;i++) {
 
-            let r = data[i];
+          for(let i=1;i<data.length;i++){
 
-            if(r &&
-               r[1] &&
-               r[1].trim() !== "" &&
-               r[1] !== "MAÇ") {
+            let r =
+              data[i];
+
+
+            if(
+              r &&
+              r[1] &&
+              r[1].trim()!=="" &&
+              r[1]!=="MAÇ"
+            ){
 
               let mac =
                 `<div class="match-cell">${r[1]}</div>`;
 
-              let iy1 = cleanRate(r[2]);
-              let iyx = cleanRate(r[3]);
-              let iy2 = cleanRate(r[4]);
 
+              let iy1 =
+                cleanRate(r[2]);
 
-              /* İLK YARI SKORU KIRMIZI */
+              let iyx =
+                cleanRate(r[3]);
+
+              let iy2 =
+                cleanRate(r[4]);
+
 
               let iySkor =
-                (r[5] && r[5].trim() !== "")
-                ? `<span class="badge-iy">${r[5]}</span>`
-                : '-';
+                (r[5] && r[5].trim()!=="")
+                ?
+                `<span class="badge-iy">${r[5]}</span>`
+                :
+                '-';
 
 
               dtIY.row.add([
@@ -815,6 +1111,7 @@ body{
 
           }
 
+
           dtIY.draw();
 
         }
@@ -822,24 +1119,30 @@ body{
       });
 
 
-
-      /* MAÇ SONU FİLTRELEME */
-
       $.fn.dataTable.ext.search.push(
-        function(settings,data,dataIndex) {
 
-          if(settings.nTable.id !== 'msTable')
+        function(settings,data){
+
+          if(
+            settings.nTable.id!=='msTable'
+          )
             return true;
 
 
           let fMS1 =
-            cleanRate($('#ms1_filter').val());
+            cleanRate(
+              $('#ms1_filter').val()
+            );
 
           let fMSX =
-            cleanRate($('#msx_filter').val());
+            cleanRate(
+              $('#msx_filter').val()
+            );
 
           let fMS2 =
-            cleanRate($('#ms2_filter').val());
+            cleanRate(
+              $('#ms2_filter').val()
+            );
 
 
           let rowMS1 =
@@ -852,39 +1155,58 @@ body{
             cleanRate(data[3]);
 
 
-          if(fMS1 !== "" && rowMS1 !== fMS1)
+          if(
+            fMS1!=="" &&
+            rowMS1!==fMS1
+          )
             return false;
 
-          if(fMSX !== "" && rowMSX !== fMSX)
+
+          if(
+            fMSX!=="" &&
+            rowMSX!==fMSX
+          )
             return false;
 
-          if(fMS2 !== "" && rowMS2 !== fMS2)
+
+          if(
+            fMS2!=="" &&
+            rowMS2!==fMS2
+          )
             return false;
 
 
           return true;
+
         }
+
       );
 
 
-
-      /* İLK YARI FİLTRELEME */
-
       $.fn.dataTable.ext.search.push(
-        function(settings,data,dataIndex) {
 
-          if(settings.nTable.id !== 'iyTable')
+        function(settings,data){
+
+          if(
+            settings.nTable.id!=='iyTable'
+          )
             return true;
 
 
           let fIY1 =
-            cleanRate($('#iy1_filter').val());
+            cleanRate(
+              $('#iy1_filter').val()
+            );
 
           let fIYX =
-            cleanRate($('#iyx_filter').val());
+            cleanRate(
+              $('#iyx_filter').val()
+            );
 
           let fIY2 =
-            cleanRate($('#iy2_filter').val());
+            cleanRate(
+              $('#iy2_filter').val()
+            );
 
 
           let rowIY1 =
@@ -897,42 +1219,50 @@ body{
             cleanRate(data[3]);
 
 
-          if(fIY1 !== "" && rowIY1 !== fIY1)
+          if(
+            fIY1!=="" &&
+            rowIY1!==fIY1
+          )
             return false;
 
-          if(fIYX !== "" && rowIYX !== fIYX)
+
+          if(
+            fIYX!=="" &&
+            rowIYX!==fIYX
+          )
             return false;
 
-          if(fIY2 !== "" && rowIY2 !== fIY2)
+
+          if(
+            fIY2!=="" &&
+            rowIY2!==fIY2
+          )
             return false;
 
 
           return true;
+
         }
+
       );
 
 
-
-      /* MAÇ SONU FİLTRELERİ */
-
-      $('#ms1_filter, #msx_filter, #ms2_filter')
-        .on('keyup change clear', function() {
-
-          dtMS.draw();
-
-        });
+      $('#ms1_filter,#msx_filter,#ms2_filter')
+        .on(
+          'keyup change clear',
+          function(){
+            dtMS.draw()
+          }
+        );
 
 
-
-      /* İLK YARI FİLTRELERİ */
-
-      $('#iy1_filter, #iyx_filter, #iy2_filter')
-        .on('keyup change clear', function() {
-
-          dtIY.draw();
-
-        });
-
+      $('#iy1_filter,#iyx_filter,#iy2_filter')
+        .on(
+          'keyup change clear',
+          function(){
+            dtIY.draw()
+          }
+        );
 
     });
 
