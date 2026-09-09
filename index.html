@@ -11,6 +11,7 @@
   <meta name="keywords" content="Boş Kaset, oran analizi, geçmiş maç oranları, kapanış oranları, futbol istatistikleri, ilk yarı oran analizi">
 
   <meta name="robots" content="index, follow">
+
   <meta name="author" content="Boş Kaset Oran Analizi">
 
   <meta name="google-site-verification" content="hlOeXuyxLo8lpRQjmzG8Ap6Y1K_5h8m-USDPJUfepu4">
@@ -31,8 +32,10 @@
     "@context":"https://schema.org",
     "@type":"WebSite",
     "name":"Boş Kaset",
-    "alternateName":["Boş Kaset Oran Analizi","Boş Kaset Futbol Oran Analizi"],
-    "url":"https://unlu4831-ai.github.io/Oran-analiz/"
+    "alternateName":[
+      "Boş Kaset Oran Analizi",
+      "Boş Kaset Futbol Oran Analizi"
+    ]
   }
   </script>
 
@@ -45,10 +48,12 @@
       --light:#f4f8fc;
       --line:#dbe5ef;
       --text:#172334;
-      --muted:#64748b;
+      --muted:#64748b
     }
 
-    *{box-sizing:border-box}
+    *{
+      box-sizing:border-box
+    }
 
     body{
       margin:0;
@@ -350,110 +355,918 @@
       border:1px solid #15803d
     }
 
-    /* ANALİZ */
-    .analysis-box{
+    .footer{
       margin-top:16px;
-      background:#f8fbff;
-      border:1px solid #dce8f3;
+      background:var(--navy);
+      color:#d7e4ef;
       border-radius:13px;
-      padding:14px
-    }
-
-    .analysis-head{
+      padding:12px 15px;
+      font-size:11px;
       display:flex;
-      align-items:center;
       justify-content:space-between;
       gap:10px;
-      margin-bottom:12px;
       flex-wrap:wrap
     }
 
-    .analysis-title{
-      font-size:15px;
-      font-weight:850;
-      color:#18314a;
-      display:flex;
-      align-items:center;
-      gap:7px
+    .footer strong{
+      color:#fff
     }
 
-    .analysis-title i{
-      color:var(--blue)
+    .footer i{
+      color:#25d875;
+      margin-right:5px
     }
 
-    .analysis-count{
-      background:#123957;
-      color:#fff;
-      border-radius:20px;
-      padding:5px 10px;
-      font-size:11px;
-      font-weight:800
-    }
-
-    .analysis-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:9px
-    }
-
-    .stat-card{
-      background:#fff;
-      border:1px solid #dfe8f1;
-      border-radius:10px;
-      padding:10px;
-      min-height:72px
-    }
-
-    .stat-label{
-      font-size:10.5px;
-      color:#66778b;
-      font-weight:700;
-      margin-bottom:4px;
-      line-height:1.25
-    }
-
-    .stat-value{
-      font-size:17px;
-      font-weight:900;
-      color:#17344e
-    }
-
-    .stat-sub{
-      font-size:10px;
-      color:#8090a2;
-      margin-top:2px
-    }
-
-    .team-analysis{
-      margin-top:10px;
-      background:#fff;
-      border:1px solid #dfe8f1;
-      border-radius:10px;
-      padding:11px
-    }
-
-    .team-title{
-      font-size:11px;
-      font-weight:850;
-      color:#18314a;
+    .dataTables_wrapper .dataTables_filter{
+      font-size:12px;
       margin-bottom:8px
     }
 
-    .team-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:8px
+    .dataTables_wrapper .dataTables_filter input{
+      border:1px solid #cfdce8;
+      border-radius:7px;
+      padding:5px 8px;
+      margin-left:5px
     }
 
-    .team-stat{
-      background:#f7fafc;
-      border-radius:8px;
-      padding:8px;
-      text-align:center
+    .dataTables_wrapper .dataTables_paginate{
+      font-size:12px;
+      margin-top:8px
     }
 
-    .team-stat-label{
-      display:block;
-      font-size:9.5px;
-      color:#6b7b8e;
-     
+    @media(max-width:768px){
+      .hero{
+        padding:19px
+      }
+
+      .hero h1{
+        font-size:22px
+      }
+
+      .hero-icon{
+        font-size:50px;
+        padding:0
+      }
+
+      .info-grid{
+        grid-template-columns:1fr
+      }
+
+      .brand-name{
+        font-size:22px
+      }
+    }
+
+    @media(max-width:576px){
+      body{
+        font-size:13px
+      }
+
+      .page{
+        margin-top:10px;
+        padding:0 7px
+      }
+
+      .topbar{
+        padding:12px
+      }
+
+      .logo-mark{
+        width:46px;
+        height:46px;
+        flex-basis:46px
+      }
+
+      .hero{
+        border-radius:13px;
+        padding:16px
+      }
+
+      .hero-icon{
+        display:none
+      }
+
+      .hero h1{
+        font-size:20px
+      }
+
+      .nav-tabs .nav-link{
+        padding:10px 8px;
+        font-size:12px
+      }
+
+      .table tbody td{
+        padding:10px 4px
+      }
+
+      .badge-iy,
+      .badge-ms{
+        min-width:58px;
+        padding:7px 8px;
+        font-size:13px;
+        border-radius:9px
+      }
+
+      .footer{
+        border-radius:10px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+
+      <div class="logo-mark" aria-label="Boş Kaset logo">
+
+        <svg viewBox="0 0 64 64" fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+             aria-hidden="true">
+
+          <rect x="8" y="13"
+                width="48"
+                height="38"
+                rx="8"
+                stroke="#25d875"
+                stroke-width="4"
+                transform="rotate(-7 8 13)"/>
+
+          <circle cx="22" cy="32" r="7"
+                  stroke="#fff"
+                  stroke-width="3"/>
+
+          <circle cx="42" cy="32" r="7"
+                  stroke="#fff"
+                  stroke-width="3"/>
+
+          <path d="M22 25h20M22 39h20"
+                stroke="#25d875"
+                stroke-width="3"
+                stroke-linecap="round"/>
+
+          <path d="M49 41l-4-2-3 3 1 5 5 2 4-3z"
+                fill="#fff"/>
+
+        </svg>
+
+      </div>
+
+      <div>
+        <div class="brand-name">
+          BOŞ <span>KASET</span>
+        </div>
+
+        <div class="brand-slogan">
+          Oranlar değişir, geçmiş değişmez.
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main class="page">
+
+    <section class="hero">
+
+      <div>
+        <h1>Geçmiş Oran Analizi</h1>
+
+        <p>
+          Girdiğiniz oranları geçmiş karşılaşmalarla karşılaştırın.
+          Aynı oranlara sahip maçların gerçekleşen sonuçlarını hızlıca inceleyin.
+        </p>
+      </div>
+
+      <div class="hero-icon">
+        <i class="bi bi-bar-chart-line-fill"></i>
+      </div>
+
+    </section>
+
+
+    <section class="info-grid">
+
+      <div class="card info-card">
+
+        <div class="section-title">
+          <i class="bi bi-info-circle-fill"></i>
+          Boş Kaset hakkında
+        </div>
+
+        <div class="notice">
+
+          <strong>Boş Kaset</strong>;
+          geçmiş karşılaşmalarda oluşan oranlar ile gerçekleşen maç sonuçlarını
+          karşılaştırmak amacıyla hazırlanmış ücretsiz bir istatistik aracıdır.
+
+          Sunulan veriler geçmiş karşılaşmalara dayanır;
+          gelecekteki sonuçlar için garanti veya tahmin sunmaz.
+
+          Platform bahis oynatmaz ve bahis oynamaya teşvik etmez.
+
+        </div>
+
+        <div class="method">
+
+          <strong>
+            <i class="bi bi-lightbulb-fill"></i>
+            Analiz yöntemi:
+          </strong>
+
+          Veritabanı, geçmiş maçların başlamasına yakın dönemdeki
+          son kapanış oranları esas alınarak oluşturulmuştur.
+
+          Karşılaştırmanın daha sağlıklı olması için mümkün olduğunca
+          güncel kapanış oranlarının kullanılması önerilir.
+
+        </div>
+
+      </div>
+
+
+      <div class="card contact">
+
+        <div class="section-title">
+          <i class="bi bi-envelope-fill"></i>
+          İş Birliği & Reklam
+        </div>
+
+        <div class="notice mb-2">
+          Marka, reklam ve iş birliği talepleri için iletişime geçebilirsiniz.
+        </div>
+
+        <div class="contact-links">
+
+          <a class="mail"
+             href="mailto:unlu4831@gmail.com">
+
+            <i class="bi bi-envelope"></i>
+            E-posta
+
+          </a>
+
+          <a class="xlink"
+             href="https://x.com/LeonMaykkk"
+             target="_blank"
+             rel="noopener">
+
+            <i class="bi bi-twitter-x"></i>
+            X
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="main-card">
+
+      <ul class="nav nav-tabs mb-2"
+          id="analizTab"
+          role="tablist">
+
+        <li class="nav-item">
+
+          <button
+            class="nav-link active"
+            id="ms-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#ms-analiz"
+            type="button">
+
+            <i class="bi bi-graph-up-arrow"></i>
+            Maç Sonucu Oran Analizi
+
+          </button>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <button
+            class="nav-link"
+            id="iy-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#iy-analiz"
+            type="button">
+
+            <i class="bi bi-stopwatch"></i>
+            İlk Yarı Oran Analizi
+
+          </button>
+
+        </li>
+
+      </ul>
+
+
+      <div class="tab-content"
+           id="analizTabContent">
+
+
+        <div class="tab-pane fade show active"
+             id="ms-analiz">
+
+          <div class="filter-box">
+
+            <div class="row g-2">
+
+              <div class="col-4">
+
+                <div class="filter-label">
+                  MS 1
+                </div>
+
+                <input
+                  type="text"
+                  id="ms1_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
+              </div>
+
+
+              <div class="col-4">
+
+                <div class="filter-label">
+                  MS X
+                </div>
+
+                <input
+                  type="text"
+                  id="msx_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
+              </div>
+
+
+              <div class="col-4">
+
+                <div class="filter-label">
+                  MS 2
+                </div>
+
+                <input
+                  type="text"
+                  id="ms2_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-responsive">
+
+            <table
+              id="msTable"
+              class="table table-striped table-hover border align-middle">
+
+              <thead>
+
+                <tr>
+
+                  <th style="width:45%">
+                    MAÇ
+                  </th>
+
+                  <th style="width:11%">
+                    MS 1
+                  </th>
+
+                  <th style="width:11%">
+                    MS X
+                  </th>
+
+                  <th style="width:11%">
+                    MS 2
+                  </th>
+
+                  <th style="width:11%">
+                    İYK
+                  </th>
+
+                  <th style="width:11%">
+                    MSK
+                  </th>
+
+                </tr>
+
+              </thead>
+
+              <tbody></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <div class="tab-pane fade"
+             id="iy-analiz">
+
+          <div class="filter-box">
+
+            <div class="row g-2">
+
+              <div class="col-4">
+
+                <div class="filter-label">
+                  İY 1
+                </div>
+
+                <input
+                  type="text"
+                  id="iy1_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
+              </div>
+
+
+              <div class="col-4">
+
+                <div class="filter-label">
+                  İY X
+                </div>
+
+                <input
+                  type="text"
+                  id="iyx_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
+              </div>
+
+
+              <div class="col-4">
+
+                <div class="filter-label">
+                  İY 2
+                </div>
+
+                <input
+                  type="text"
+                  id="iy2_filter"
+                  class="form-control form-control-sm text-center"
+                  placeholder="Oran">
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="table-responsive">
+
+            <table
+              id="iyTable"
+              class="table table-striped table-hover border align-middle">
+
+              <thead>
+
+                <tr>
+
+                  <th style="width:52%">
+                    MAÇ
+                  </th>
+
+                  <th style="width:12%">
+                    İY 1
+                  </th>
+
+                  <th style="width:12%">
+                    İY X
+                  </th>
+
+                  <th style="width:12%">
+                    İY 2
+                  </th>
+
+                  <th style="width:12%">
+                    İYK
+                  </th>
+
+                </tr>
+
+              </thead>
+
+              <tbody></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+      <span>
+        <strong>BOŞ KASET</strong>
+        · Oranlar değişir, geçmiş değişmez.
+      </span>
+
+      <span>
+        <i class="bi bi-shield-check"></i>
+        Geçmiş futbol istatistikleri
+      </span>
+
+      <span>
+        © 2026 Tüm Hakları Saklıdır.
+      </span>
+
+    </footer>
+
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+
+  <script>
+
+    const MS_CSV_URL =
+      "https://docs.google.com/spreadsheets/d/1dtwbQFgdblHy84EFhnNT-N0lhce-jSX_IVCfQSaF_EI/gviz/tq?tqx=out:csv";
+
+    const IY_CSV_URL =
+      "https://docs.google.com/spreadsheets/d/14yjMc1-ANEtwiG9kkDbmiYSdM9Aa4x6Bl6w1QTJHXT0/gviz/tq?tqx=out:csv";
+
+
+    function cleanRate(val){
+
+      if(!val)
+        return "";
+
+      let s =
+        val
+          .toString()
+          .trim()
+          .replace(',','.');
+
+      let n =
+        parseFloat(s);
+
+      if(isNaN(n))
+        return "";
+
+      return n.toFixed(2);
+
+    }
+
+
+    $(document).ready(function(){
+
+      let dtMS =
+        $('#msTable').DataTable({
+
+          paging:true,
+          pageLength:25,
+          info:false,
+          ordering:false,
+
+          language:{
+            zeroRecords:"Orana uygun maç bulunamadı",
+            search:"Sonuçlarda Ara:"
+          }
+
+        });
+
+
+      let dtIY =
+        $('#iyTable').DataTable({
+
+          paging:true,
+          pageLength:25,
+          info:false,
+          ordering:false,
+
+          language:{
+            zeroRecords:"Orana uygun maç bulunamadı",
+            search:"Sonuçlarda Ara:"
+          }
+
+        });
+
+
+      Papa.parse(MS_CSV_URL,{
+
+        download:true,
+        header:false,
+
+        complete:function(results){
+
+          let data =
+            results.data;
+
+          dtMS.clear();
+
+
+          for(let i=1;i<data.length;i++){
+
+            let r =
+              data[i];
+
+
+            if(
+              r &&
+              r[1] &&
+              r[1].trim()!=="" &&
+              r[1]!=="MAÇ"
+            ){
+
+              let mac =
+                `<div class="match-cell">${r[1]}</div>`;
+
+
+              let ms1 =
+                cleanRate(r[2]);
+
+              let msx =
+                cleanRate(r[3]);
+
+              let ms2 =
+                cleanRate(r[4]);
+
+
+              let iySkor =
+                (r[6] && r[6].trim()!=="")
+                ?
+                `<span class="badge-iy">${r[6]}</span>`
+                :
+                '-';
+
+
+              let msSkor =
+                (r[7] && r[7].trim()!=="")
+                ?
+                `<span class="badge-ms">${r[7]}</span>`
+                :
+                '-';
+
+
+              dtMS.row.add([
+                mac,
+                ms1,
+                msx,
+                ms2,
+                iySkor,
+                msSkor
+              ]);
+
+            }
+
+          }
+
+
+          dtMS.draw();
+
+        }
+
+      });
+
+
+      Papa.parse(IY_CSV_URL,{
+
+        download:true,
+        header:false,
+
+        complete:function(results){
+
+          let data =
+            results.data;
+
+          dtIY.clear();
+
+
+          for(let i=1;i<data.length;i++){
+
+            let r =
+              data[i];
+
+
+            if(
+              r &&
+              r[1] &&
+              r[1].trim()!=="" &&
+              r[1]!=="MAÇ"
+            ){
+
+              let mac =
+                `<div class="match-cell">${r[1]}</div>`;
+
+
+              let iy1 =
+                cleanRate(r[2]);
+
+              let iyx =
+                cleanRate(r[3]);
+
+              let iy2 =
+                cleanRate(r[4]);
+
+
+              let iySkor =
+                (r[5] && r[5].trim()!=="")
+                ?
+                `<span class="badge-iy">${r[5]}</span>`
+                :
+                '-';
+
+
+              dtIY.row.add([
+                mac,
+                iy1,
+                iyx,
+                iy2,
+                iySkor
+              ]);
+
+            }
+
+          }
+
+
+          dtIY.draw();
+
+        }
+
+      });
+
+
+      $.fn.dataTable.ext.search.push(
+
+        function(settings,data){
+
+          if(
+            settings.nTable.id!=='msTable'
+          )
+            return true;
+
+
+          let fMS1 =
+            cleanRate(
+              $('#ms1_filter').val()
+            );
+
+          let fMSX =
+            cleanRate(
+              $('#msx_filter').val()
+            );
+
+          let fMS2 =
+            cleanRate(
+              $('#ms2_filter').val()
+            );
+
+
+          let rowMS1 =
+            cleanRate(data[1]);
+
+          let rowMSX =
+            cleanRate(data[2]);
+
+          let rowMS2 =
+            cleanRate(data[3]);
+
+
+          if(
+            fMS1!=="" &&
+            rowMS1!==fMS1
+          )
+            return false;
+
+
+          if(
+            fMSX!=="" &&
+            rowMSX!==fMSX
+          )
+            return false;
+
+
+          if(
+            fMS2!=="" &&
+            rowMS2!==fMS2
+          )
+            return false;
+
+
+          return true;
+
+        }
+
+      );
+
+
+      $.fn.dataTable.ext.search.push(
+
+        function(settings,data){
+
+          if(
+            settings.nTable.id!=='iyTable'
+          )
+            return true;
+
+
+          let fIY1 =
+            cleanRate(
+              $('#iy1_filter').val()
+            );
+
+          let fIYX =
+            cleanRate(
+              $('#iyx_filter').val()
+            );
+
+          let fIY2 =
+            cleanRate(
+              $('#iy2_filter').val()
+            );
+
+
+          let rowIY1 =
+            cleanRate(data[1]);
+
+          let rowIYX =
+            cleanRate(data[2]);
+
+          let rowIY2 =
+            cleanRate(data[3]);
+
+
+          if(
+            fIY1!=="" &&
+            rowIY1!==fIY1
+          )
+            return false;
+
+
+          if(
+            fIYX!=="" &&
+            rowIYX!==fIYX
+          )
+            return false;
+
+
+          if(
+            fIY2!=="" &&
+            rowIY2!==fIY2
+          )
+            return false;
+
+
+          return true;
+
+        }
+
+      );
+
+
+      $('#ms1_filter,#msx_filter,#ms2_filter')
+        .on(
+          'keyup change clear',
+          function(){
+            dtMS.draw()
+          }
+        );
+
+
+      $('#iy1_filter,#iyx_filter,#iy2_filter')
+        .on(
+          'keyup change clear',
+          function(){
+            dtIY.draw()
+          }
+        );
+
+    });
+
+  </script>
+
+</body>
+</html>
